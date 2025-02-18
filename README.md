@@ -55,12 +55,6 @@ Manage Created Listings/Pickup Games:
     2. To update any information for your listings/pickup games, click on your post and make changes if needed then click “Save Changes”
     3. To delete your listings/pickup games, click on “Delete” next to your post and then confirm
 
-Team’s progress: 
+# Team’s progress: 
 	So far, we've set up the application's MVC structure.
 	We are designing the application’s layout on Framer.
-
-
-
-
-
-
