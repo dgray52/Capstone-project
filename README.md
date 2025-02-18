@@ -7,16 +7,16 @@ NinerMeet is a website for UNCC students either living in campus dorms or in apa
 
 # Setup Instructions
 
-Compiler: VS Code
-Framework: express 
-Install the Environment
-    Download and install Node.js
-Install Dependencies
-    Navigate to the project directory and run: 
-        npm install
-Run the Application
-    Start the application using:
-        nodemon app.js
+Compiler: VS Code  
+Framework: express  
+Install the Environment  
+>Download and install Node.js  
+Install Dependencies  
+>Navigate to the project directory and run:  
+>`npm install`  
+Run the Application  
+>Start the application using:  
+>`nodemon app.js`
 
 # Usage Details
 
