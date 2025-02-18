@@ -1,5 +1,6 @@
 # Capstone-project
 
+
 # Project Overview
 
 NinerMeet is a website for UNCC students either living in campus dorms or in apartments near campus who want to buy, sell, or trade items in those dorms/apartments. This is mainly aimed at students who don’t want to bring back unwanted items from their dorms/apartments to their homes and don’t want to deal with external marketplaces. The website will also allow students to find/form groups for pickup games and organize pickup games. Ideally, the website should make student life more convenient by helping to deal with students’ unwanted items, reduce waste from those unwanted items, and build a stronger campus community through using pickup games to connect students with each other.
@@ -58,3 +59,4 @@ Manage Created Listings/Pickup Games:
 # Team’s progress: 
 	So far, we've set up the application's MVC structure.
 	We are designing the application’s layout on Framer.
+
