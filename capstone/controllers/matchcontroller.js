@@ -1,5 +1,7 @@
 const model = require("../models/data");
-exports.index = (req, res) => {};
+exports.index = (req, res) => {
+res.render('matches/index');    
+};
 exports.new = (req, res) => {};
 exports.create = (req, res) => {};
 exports.show = (req, res) => {};
