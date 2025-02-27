@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/matchcontroller');
+const controller = require('../controllers/swapcontroller');
 // / index
 router.get('/', controller.index);
 //get /swaps/new 
