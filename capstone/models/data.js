@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const swapItems = [
     {
-        id : "1",
+        id: "1",
         category: "Electronics",
         seller: "Alex",
         name: "TI-84 Calculator",
@@ -9,7 +9,7 @@ const swapItems = [
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
-        id : "2",
+        id: "2",
         category: "Electronics",
         seller: "Bob",
         name: "Charger",
@@ -17,7 +17,7 @@ const swapItems = [
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
-        id : "3",
+        id: "3",
         category: "Clothing",
         seller: "Noah",
         name: "Jacket",
@@ -25,7 +25,7 @@ const swapItems = [
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
-        id : "4",
+        id: "4",
         category: "Clothing",
         seller: "Oliver",
         name: "Hoodie",
@@ -33,7 +33,7 @@ const swapItems = [
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
-        id : "5",
+        id: "5",
         category: "Materials",
         seller: "Henry",
         name: "Notebook",
@@ -41,7 +41,7 @@ const swapItems = [
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
-        id : "6",
+        id: "6",
         category: "Materials",
         seller: "Lucas",
         name: "Course Textbook",
@@ -50,24 +50,29 @@ const swapItems = [
     }
 ]
 
-exports.find = () =>{
+exports.find = () => {
     return swapItems;
 }
 
-exports.findById = (id)=>{
-    return swapItems.find(item=>item.id === id);
+exports.findById = (id) => {
+    return swapItems.find(item => item.id === id);
 }
-exports.newItem=(item)=>{
+exports.newItem = (item) => {
 
-    item.id=uuidv4();
+    item.id = uuidv4();
     swapItems.push(item);
 }
-exports.updateById=function(id,newitem){
-    let item = swapItems.find(item=>item.id === id);
-    item.category=newitem.category;
-    item.name=newitem.item;
-    item.description=newitem.description;
-    item.seller=newitem.seller;
-    swapItems.push(item);
+exports.updateById = function (id, newitem) {
+    let item = swapItems.find(item => item.id === id);
+    item.category = newitem.category;
+    item.name = newitem.item;
+    item.description = newitem.description;
+    item.seller = newitem.seller;
 
+}
+exports.deleteById = (id) => {
+    let index = swapItems.findIndex(item => item.id === id);
+    if (index !== -1) {
+        swapItems.splice(index, 1);
+    }
 }

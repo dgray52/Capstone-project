@@ -31,4 +31,8 @@ exports.update = (req, res) => {
     model.updateById(id,update);
     res.redirect('/swaps/');
 };
-exports.delete = (req, res) => {};
+exports.delete = (req, res) => {
+    let id=req.params.id;
+    model.deleteById(id);
+    res.redirect('/swaps/');
+};
