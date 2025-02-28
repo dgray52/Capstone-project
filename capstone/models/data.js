@@ -58,11 +58,16 @@ exports.findById = (id)=>{
     return swapItems.find(item=>item.id === id);
 }
 exports.newItem=(item)=>{
-    
+
     item.id=uuidv4();
     swapItems.push(item);
-
-
-
+}
+exports.updateById=function(id,newitem){
+    let item = swapItems.find(item=>item.id === id);
+    item.category=newitem.category;
+    item.name=newitem.item;
+    item.description=newitem.description;
+    item.seller=newitem.seller;
+    swapItems.push(item);
 
 }

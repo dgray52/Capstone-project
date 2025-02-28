@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>
+<main class="swap-item-main">
+    <div class="item-info">
+    <form  method = 'POST' action = "/swaps/<%= item.id%>?_method=PUT"  class="new-form">
+        <label for="item">Name of the item</label>
+        <input name="item" id="item" type="text"  value = "<%=item.name%>" required>
+        <br>
+        <label for="seller">Seller</label>
+        <input name="seller" id="seller" type="text"  value = "<%=item.seller%>" required>
+        <br>
+        <label for="category">Category of the item</label>
+        <input name="category" id="category" type="text"  value = "<%=item.category%>" required>
+        <br>
+        <label for="description">Description of the item</label>
+        <textarea name="description" id="description" required> <%=item.description%> </textarea>
+        <br>
+        <input type="submit" value="Submit">
+      
+    </form>
+</div>
+</main>
+<%- include('../partials/footer.ejs')%>

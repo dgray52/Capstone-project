@@ -20,6 +20,15 @@ exports.show = (req, res) => {
     console.log(id,item);
     res.render('swap/item', {item});
 };
-exports.edit = (req, res) => {};
-exports.update = (req, res) => {};
+exports.edit = (req, res) => {
+    let id =req.params.id;
+    let item=model.findById(id.toString());
+    res.render('swap/edit', {item});
+};
+exports.update = (req, res) => {
+    let update=req.body;
+    let id=req.params.id;
+    model.updateById(id,update);
+    res.redirect('/swaps/');
+};
 exports.delete = (req, res) => {};

@@ -6,6 +6,7 @@
         </h2>
         <p><%=item.seller%></p>
         <p><%=item.description%></p>
+        <form action="/swaps/<%= item.id%>/edit" method="GET"><button type="submit" formmethod="GET" formaction="/swaps/<%= item.id%>/edit">Edit</button></form>
     </div>
 </main>
 <%- include('../partials/footer.ejs')%>
