@@ -54,7 +54,5 @@ exports.find = () =>{
 }
 
 exports.findById = (id)=>{
-    return swapItems.find(item=>{
-        item.id === id;
-    })
+    return swapItems.find(item=>item.id === id);
 }

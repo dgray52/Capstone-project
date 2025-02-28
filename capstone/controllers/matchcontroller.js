@@ -4,7 +4,9 @@ res.render('matches/index');
 };
 exports.new = (req, res) => {};
 exports.create = (req, res) => {};
-exports.show = (req, res) => {};
+exports.show = (req, res) => {
+    
+};
 exports.edit = (req, res) => {};
 exports.update = (req, res) => {};
 exports.delete = (req, res) => {};
