@@ -1,8 +1,9 @@
+
 const swapItems = [
     {
         id : "1",
         category: "Electronics",
-        author: "Alex",
+        seller: "Alex",
         name: "TI-84 Calculator",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -10,7 +11,7 @@ const swapItems = [
     {
         id : "2",
         category: "Electronics",
-        author: "Bob",
+        seller: "Bob",
         name: "Charger",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -18,7 +19,7 @@ const swapItems = [
     {
         id : "3",
         category: "Clothing",
-        author: "Noah",
+        seller: "Noah",
         name: "Jacket",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -26,7 +27,7 @@ const swapItems = [
     {
         id : "4",
         category: "Clothing",
-        author: "Oliver",
+        seller: "Oliver",
         name: "Hoodie",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -34,7 +35,7 @@ const swapItems = [
     {
         id : "5",
         category: "Materials",
-        author: "Henry",
+        seller: "Henry",
         name: "Notebook",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -42,7 +43,7 @@ const swapItems = [
     {
         id : "6",
         category: "Materials",
-        author: "Lucas",
+        seller: "Lucas",
         name: "Course Textbook",
         img: "/images/books.png",
         description: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"

@@ -5,7 +5,7 @@ exports.index = (req, res) => {
     res.render('swap/index', {items});
 };
 exports.new = (req, res) => {
-
+    res.render('swap/newitem');
 };
 exports.create = (req, res) => {};
 exports.show = (req, res) => {

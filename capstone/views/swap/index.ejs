@@ -1,6 +1,7 @@
 <%- include('../partials/header.ejs')%>
 <main class="swap-main">
     <h2 class="title">ITEMS FOR SWAPPING</h2>
+    <h3 class="title">Make a new listing <a href="/swaps/new"><b>here</b></a></h3>
     <div class="products">
         <% items.forEach(item=>{ %>
             <a href="/swaps/<%=item.id%>">

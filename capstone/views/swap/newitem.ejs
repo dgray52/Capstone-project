@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs')%>
 <main class="swap-item-main">
+    <div class="item-info">
     <form action="/items" method="POST" enctype="multipart/form-data" class="new-form">
         <label for="item">Name of the item</label>
         <input name="item" id="item" type="text"  required>
@@ -11,10 +12,11 @@
         <input name="category" id="category" type="text"  required>
         <br>
         <label for="description">Description of the item</label>
-        <textarea name="description" id="description" required></text>
+        <textarea name="description" id="description" required></textarea>
         <br>
         <input type="submit" value="Submit">
       
     </form>
+</div>
 </main>
 <%- include('../partials/footer.ejs')%>
