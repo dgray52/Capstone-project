@@ -1,4 +1,4 @@
-
+const { v4: uuidv4 } = require('uuid');
 const swapItems = [
     {
         id : "1",
@@ -56,4 +56,13 @@ exports.find = () =>{
 
 exports.findById = (id)=>{
     return swapItems.find(item=>item.id === id);
+}
+exports.newItem=(item)=>{
+    
+    item.id=uuidv4();
+    swapItems.push(item);
+
+
+
+
 }

@@ -7,7 +7,12 @@ exports.index = (req, res) => {
 exports.new = (req, res) => {
     res.render('swap/newitem');
 };
-exports.create = (req, res) => {};
+exports.create = (req, res) => {
+    let newitem=req.body;
+    console.log(newitem);
+    model.newItem(newitem);
+    res.redirect('/swaps/')
+};
 exports.show = (req, res) => {
    let id=req.params.id;
    
