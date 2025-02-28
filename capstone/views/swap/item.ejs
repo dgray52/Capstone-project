@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs')%>
+<main class="swap-item-main">
+    <img src="<%= item.img%>" alt="item image">
+    <div class="item-info">
+        <h2><%=item.name%> | <p><%= item.category%></p>
+        </h2>
+        <p><%=item.author%></p>
+        <p><%=item.description%></p>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>

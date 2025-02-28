@@ -1,8 +1,15 @@
-/* start home index page css */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
@@ -15,8 +22,8 @@ body {
 }
 
 .logo img {
-    width: 70px; /* Adjust width */
-    height: auto; /* Maintain aspect ratio */
+    width: 70px; 
+    height: auto; 
 }
 
 .nav-links {
@@ -31,15 +38,20 @@ body {
     font-weight: bold;
 }
 
-.cart-wishlist {
-    display: flex;
-    gap: 10px;
+footer{
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    height: 10%;
 }
+
+
+
+/* start home page css */
 
 .hero-section {
     display: flex;
-    height: 90vh;
-    position: relative;
+    height: 90%;
     gap: 10px;
 }
 
@@ -98,4 +110,63 @@ body {
     color: white;
 }
 
-/* end home index page css */
+/* end home page css */
+
+/* start swap items page css */
+.swap-main {
+    text-align: center;
+    height: 90%;
+    padding: 30px;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #002B5B;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+}
+
+.badge {
+    background-color: #C62828;
+    color: white;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+img + p  {
+    font-weight: bold;
+    color: #002B5B;
+    font-size: 18px;
+}
+
+/* end swap items page css */

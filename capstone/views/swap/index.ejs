@@ -1,7 +1,14 @@
 <%- include('../partials/header.ejs')%>
-<main>
-
+<main class="swap-main">
+    <h2 class="title">ITEMS FOR SWAPPING</h2>
+    <div class="products">
+        <% items.forEach(item=>{ %>
+            <div class="product">
+                <span class="badge"><%= item.category%></span>
+                <img src="<%= item.img%>" alt="item image">
+                <p><%=item.name%></p>
+            </div>
+        <% }) %>
+    </div>
 </main>
 <%- include('../partials/footer.ejs')%>
-</body>
-</html>
