@@ -1,15 +1,15 @@
-
-    <%- include('../partials/header.ejs')%>
-    <main class="matches-main">
-        <h2 class="title">Game Matches</h2>
-        <div class="matches">
-            <ul>
-                <li class="match">
-                    <p class="game-type"></p>
-                    <p class="game-time"></p>
-                    <p class="players"></p>
-                </li>
-            </ul>
-        </div>
-    </main>
-    <%- include('../partials/footer.ejs')%>
+<%- include('../partials/header.ejs')%>
+<main class="matches-main">
+    <h2 class="title">Game Matches</h2>
+    <h3 class="title">Organize a new game <a href="/matches/new"><b>here</b></a></h3>
+    <div class="games">
+        <% games.forEach(game=>{ %>
+            <a href="/games/<%=game.id%>">
+            <div class="game">
+                <span class="badge"><%= game.category%></span>
+                <p><%=game.name%></p>
+            </div></a>
+        <% }) %>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>
