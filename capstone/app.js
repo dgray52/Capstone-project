@@ -24,5 +24,5 @@ app.get('/',(req,res) =>{
 app.use('/matches',MatchRoutes);
 app.use('/swaps',SwapRoutes);
 app.listen(port,host, () =>{
-    console.log('test');
+    console.log('this is a test');
 });
