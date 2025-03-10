@@ -1,10 +1,14 @@
 <%- include('../partials/header.ejs')%>
-<main class="match-game-main">
-    <div class="game-info">
-        <h2><%=game.name%> | <p><%= game.category%></p>
+<main class="swap-item-main">
+    <img src="<%= game.img%>" alt="game image">
+    <div class="item-info">
+        <h2><%=game.sport%>
         </h2>
-        <p><%=game.host%></p>
-        <p><%=item.description%></p>
+        <p><%=game.home%> vs <%=game.away%></p>
+        <p><%= game.location%></p>
+        <form><button type="submit" formmethod="GET" formaction="/matches/<%= game.id%>/edit">Edit</button>
+            <button type="submit" formmethod="POST" formaction="/matches/<%= game.id%>?_method=DELETE">Delete</button>
+        </form>
     </div>
 </main>
 <%- include('../partials/footer.ejs')%>

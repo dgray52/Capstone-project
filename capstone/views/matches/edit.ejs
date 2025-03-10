@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>
+<main class="swap-item-main">
+    <div class="item-info">
+    <form  method = 'POST' action = "/matches/<%=game.id%>?_method=PUT"  class="new-form">
+        <label for="sport">Name of the sport</label>
+        <input name="sport" id="sport" type="text" value = "<%=game.sport%>" required>
+        <br>
+        <label for="home">Host</label>
+        <input name="home" id="home" type="home"   value = "<%=game.home%>" required>
+        <br>
+        <label for="away">Challenger</label>
+        <input name="away" id="away" type="text" value = "<%=game.away%>" required>
+        <br>
+        <label for="location">location of the game</label>
+        <textarea name="location" id="location" required value = "<%=game.location%>"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+      
+    </form>
+</div>
+</main>
+<%- include('../partials/footer.ejs')%>

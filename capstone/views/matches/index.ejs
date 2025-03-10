@@ -2,12 +2,14 @@
 <main class="matches-main">
     <h2 class="title">Game Matches</h2>
     <h3 class="title">Organize a new game <a href="/matches/new"><b>here</b></a></h3>
-    <div class="games">
+    <div class="products">
         <% games.forEach(game=>{ %>
-            <a href="/games/<%=game.id%>">
-            <div class="game">
-                <span class="badge"><%= game.category%></span>
-                <p><%=game.name%></p>
+            <a href="/matches/<%=game.id%>">
+            <div class="product">
+                <span class="badge"><%= game.sport%></span>
+                <img src="<%= game.img%>" alt="game image">
+                <p><%=game.home%> vs <%=game.away%> </p>
+                
             </div></a>
         <% }) %>
     </div>
