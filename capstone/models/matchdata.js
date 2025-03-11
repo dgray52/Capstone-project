@@ -2,49 +2,49 @@ const { v4: uuidv4 } = require('uuid');
 const matchData = [
     {
         id: "1",
-        sport: "Electronics",
+        sport: "Basketball",
         home: "Alex",
-        away: "TI-84 Calculator",
+        away: "tim",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
         id: "2",
-        sport: "Electronics",
+        sport: "basketball",
         home: "Bob",
-        away: "Charger",
+        away: "frank",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
         id: "3",
-        sport: "Clothing",
+        sport: "tennis",
         home: "Noah",
-        away: "Jacket",
+        away: "larson",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
         id: "4",
-        sport: "Clothing",
+        sport: "ping pong",
         home: "Oliver",
-        away: "Hoodie",
+        away: "charlie",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
         id: "5",
-        sport: "Materials",
+        sport: "basketball",
         home: "Henry",
-        away: "Notebook",
+        away: "ben",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     },
     {
         id: "6",
-        sport: "Materials",
+        sport: "chess",
         home: "Lucas",
-        away: "Course Textbook",
+        away: "franklin",
         img: "/images/books.png",
         location: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
     }
