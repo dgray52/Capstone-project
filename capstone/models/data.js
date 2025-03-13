@@ -65,10 +65,10 @@ exports.newItem = (item) => {
 exports.updateById = function (id, newitem) {
     let item = swapItems.find(item => item.id === id);
     item.category = newitem.category;
-    item.name = newitem.item;
+    item.name = newitem.name;
     item.description = newitem.description;
     item.seller = newitem.seller;
-
+    item.img = newitem.img;
 }
 exports.deleteById = (id) => {
     let index = swapItems.findIndex(item => item.id === id);

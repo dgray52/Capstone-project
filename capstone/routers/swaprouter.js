@@ -1,3 +1,4 @@
+const upload = require('../middleware/img_upload');
 const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
@@ -15,8 +16,9 @@ router.post('/', controller.create);
 router.get('/:id', controller.show);
 //get /swaps/:id/edit:
 router.get('/:id/edit', controller.edit);
-//put swaps/:id
-router.put('/:id', controller.update);
+
+//put swaps/:id  ---update
+router.put('/:id', upload.single('img'), controller.update);
 
 //delete 
 router.delete('/:id', controller.delete);

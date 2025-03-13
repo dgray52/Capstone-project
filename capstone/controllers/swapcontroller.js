@@ -28,8 +28,12 @@ exports.edit = (req, res) => {
 exports.update = (req, res) => {
     let update=req.body;
     let id=req.params.id;
+    console.log(req.file);
+    if(req.file){
+        update.img = '/images/' + req.file.filename;
+    }
     model.updateById(id,update);
-    res.redirect('/swaps/');
+    res.redirect('/swaps/'+id);
 };
 exports.delete = (req, res) => {
     let id=req.params.id;

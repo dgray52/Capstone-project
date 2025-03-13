@@ -1,22 +1,39 @@
 <%- include('../partials/header.ejs')%>
-<main class="swap-item-main">
-    <div class="item-info">
-    <form  method = 'POST' action = "/swaps/<%= item.id%>?_method=PUT"  class="new-form">
-        <label for="item">Name of the item</label>
-        <input name="item" id="item" type="text"  value = "<%=item.name%>" required>
-        <br>
-        <label for="seller">Seller</label>
-        <input name="seller" id="seller" type="text"  value = "<%=item.seller%>" required>
-        <br>
-        <label for="category">Category of the item</label>
-        <input name="category" id="category" type="text"  value = "<%=item.category%>" required>
-        <br>
-        <label for="description">Description of the item</label>
-        <textarea name="description" id="description" required> <%=item.description%> </textarea>
-        <br>
-        <input type="submit" value="Submit">
-      
-    </form>
-</div>
+
+<main>
+    <div class="edit-form-container">
+        <form class="form-group" method = "POST" action = "/swaps/<%= item.id%>?_method=PUT" enctype="multipart/form-data">
+                <div>
+                    <label>Seller Name *</label>
+                    <input name= "seller" type="text" value="<%= item.seller %>" required>
+                </div>
+                <div>
+                    <label>Item Name *</label>
+                    <input name="name" type="text" value="<%= item.name %>" required>
+                </div>
+                <div class="category-menu">
+                    <label>Category of the item</label> 
+                    <select name="category" required>
+                        <option label=" "></option>
+                        <option <%= item.category === "Electronics" ? "selected" : "" %>>Electronics</option>
+                        <option <%= item.category === "Clothing" ? "selected" : "" %>>Clothing</option>
+                        <option <%= item.category === "Materials" ? "selected" : "" %>>Materials</option>
+                        <option <%= item.category === "Other" ? "selected" : "" %>>Other</option>
+                    </select>
+                </div>
+                <div class="details-input">
+                    <label>Details</label> 
+                    <textarea name="description" id="details-txt" rows="6" required><%= item.description %></textarea>
+                </div>
+                <div class="upload-img">
+                    <label>Image</label> 
+                    <input id="upload-btn" type="file" name="img" required>
+                </div>
+
+                <input class="edit-form-submit" type="submit">
+
+        </form>
+    </div>
 </main>
+
 <%- include('../partials/footer.ejs')%>
