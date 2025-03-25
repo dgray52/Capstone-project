@@ -2,7 +2,7 @@ const model = require("../models/matchdata");
 
 exports.index = (req, res,next) => {
     model.find()
-    .then(matches=>{res.render('./matches/index',{matches});})
+    .then(games=>{res.render('./matches/index',{games});})
     .catch(err=>{next(err);});
 };
 exports.new = (req, res) => {
@@ -10,7 +10,7 @@ exports.new = (req, res) => {
 };
 exports.create = (req, res,next) => {
     let newgame=new model(req.body);
-    model.save()
+    newgame.save()
     .then((game)=>{
         res.redirect('/matches/')
     })
@@ -26,8 +26,8 @@ exports.show = (req, res,next) => {
         return next(err);
     }
     model.findById(id)
-    .then(match=>{
-    if(match)
+    .then(game=>{
+    if(game)
         { res.render('matches/game', {game});  }
     else{let err=new Error('cannont find match with id' + id);
         err.status=404;
@@ -39,7 +39,7 @@ exports.show = (req, res,next) => {
 };
 exports.edit = (req, res,next) => {
     let id=req.params.id;
-    let match = model.findById(id);
+    let game = model.findById(id);
    if(!id.match(/^[0-9a-fA-F]{24}$/))
     {
         let err=new Error('invalid match id');
@@ -47,9 +47,9 @@ exports.edit = (req, res,next) => {
         return next(err);
     }
     model.findById(id)
-    .then(match=>{
-    if(match)
-        { res.render('matches/edit', {match});  }
+    .then(game=>{
+    if(game)
+        { res.render('matches/edit', {game});  }
     else{let err=new Error('cannont find match with id' + id);
         err.status=404;
         next(err);
@@ -59,7 +59,7 @@ exports.edit = (req, res,next) => {
     
 };
 exports.update = (req, res,next) => {
-    let match = req.body;
+    let game = req.body;
     let id = req.params.id;
     if(!id.match(/^[0-9a-fA-F]{24}$/))
         {
@@ -67,9 +67,9 @@ exports.update = (req, res,next) => {
             err.status=400;
             return next(err);
         }
-    model.findByIdAndUpdate(id, match, {useFindAndModify:false,runValidators:true})
-    .then(match=>{
-        if (match) {
+    model.findByIdAndUpdate(id, game, {useFindAndModify:false,runValidators:true})
+    .then(game=>{
+        if (game) {
             res.redirect('/matches/' + id);
         } else {
             let err = new Error('Cannot find a match with id ' + id);
@@ -93,8 +93,8 @@ exports.delete = (req, res,next) => {
             return next(err);
         }
     model.findByIdAndDelete(id,{useFindAndModify:false})
-    .then(match=>{
-        if (match) {
+    .then(game=>{
+        if (game) {
             res.redirect('/matches/');
         } else {
             

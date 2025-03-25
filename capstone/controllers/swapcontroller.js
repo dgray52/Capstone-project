@@ -1,18 +1,18 @@
-const model = require("../models/matchdata");
+const model = require("../models/data");
 
 exports.index = (req, res,next) => {
     model.find()
-    .then(items=>{res.render('./items/index',{items});})
+    .then(items=>{res.render('./swap/index',{items});})
     .catch(err=>{next(err);});
 };
 exports.new = (req, res) => {
-    res.render('items/newgame');
+    res.render('swap/newitem');
 };
 exports.create = (req, res,next) => {
     let newitem=new model(req.body);
-    model.save()
+    newitem.save()
     .then((item)=>{
-        res.redirect('/items/')
+        res.redirect('/swaps/');
     })
     .catch(err=>{next(err);});
     
@@ -26,9 +26,9 @@ exports.show = (req, res,next) => {
         return next(err);
     }
     model.findById(id)
-    .then(match=>{
+    .then(item=>{
     if(item)
-        { res.render('items/item', {game});  }
+        { res.render('swap/item', {item});  }
     else{let err=new Error('cannont find item with id' + id);
         err.status=404;
         next(err);
@@ -49,7 +49,7 @@ exports.edit = (req, res,next) => {
     model.findById(id)
     .then(item=>{
     if(item)
-        { res.render('matches/edit', {item});  }
+        { res.render('swap/edit', {item});  }
     else{let err=new Error('cannont find match with id' + id);
         err.status=404;
         next(err);
@@ -70,7 +70,7 @@ exports.update = (req, res,next) => {
     model.findByIdAndUpdate(id, item, {useFindAndModify:false,runValidators:true})
     .then(item=>{
         if (item) {
-            res.redirect('/items/' + id);
+            res.redirect('/swaps/' + id);
         } else {
             let err = new Error('Cannot find a items with id ' + id);
             err.status = 404;
@@ -95,7 +95,7 @@ exports.delete = (req, res,next) => {
     model.findByIdAndDelete(id,{useFindAndModify:false})
     .then(item=>{
         if (item) {
-            res.redirect('/items/');
+            res.redirect('/swaps/');
         } else {
             
             let err = new Error('Cannot find a item with id ' + id);
