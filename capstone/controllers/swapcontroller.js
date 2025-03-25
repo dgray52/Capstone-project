@@ -1,42 +1,110 @@
-const model = require("../models/data");
+const model = require("../models/matchdata");
 
-exports.index = (req, res) => {
-    let items = model.find();
-    res.render('swap/index', {items});
+exports.index = (req, res,next) => {
+    model.find()
+    .then(items=>{res.render('./items/index',{items});})
+    .catch(err=>{next(err);});
 };
 exports.new = (req, res) => {
-    res.render('swap/newitem');
+    res.render('items/newgame');
 };
-exports.create = (req, res) => {
-    let newitem=req.body;
-    console.log(newitem);
-    model.newItem(newitem);
-    res.redirect('/swaps/')
+exports.create = (req, res,next) => {
+    let newitem=new model(req.body);
+    model.save()
+    .then((item)=>{
+        res.redirect('/items/')
+    })
+    .catch(err=>{next(err);});
+    
 };
-exports.show = (req, res) => {
+exports.show = (req, res,next) => {
    let id=req.params.id;
-   
-    let item=model.findById(id.toString());
-    console.log(id,item);
-    res.render('swap/item', {item});
-};
-exports.edit = (req, res) => {
-    let id =req.params.id;
-    let item=model.findById(id.toString());
-    res.render('swap/edit', {item});
-};
-exports.update = (req, res) => {
-    let update=req.body;
-    let id=req.params.id;
-    console.log(req.file);
-    if(req.file){
-        update.img = '/images/' + req.file.filename;
+   if(!id.match(/^[0-9a-fA-F]{24}$/))
+    {
+        let err=new Error('invalid item id');
+        err.status=400;
+        return next(err);
     }
-    model.updateById(id,update);
-    res.redirect('/swaps/'+id);
+    model.findById(id)
+    .then(match=>{
+    if(item)
+        { res.render('items/item', {game});  }
+    else{let err=new Error('cannont find item with id' + id);
+        err.status=404;
+        next(err);
+    }
+    })
+    .catch(err=>{next(err);});
+    
 };
-exports.delete = (req, res) => {
+exports.edit = (req, res,next) => {
     let id=req.params.id;
-    model.deleteById(id);
-    res.redirect('/swaps/');
+    let item = model.findById(id);
+   if(!id.match(/^[0-9a-fA-F]{24}$/))
+    {
+        let err=new Error('invalid item id');
+        err.status=400;
+        return next(err);
+    }
+    model.findById(id)
+    .then(item=>{
+    if(item)
+        { res.render('matches/edit', {item});  }
+    else{let err=new Error('cannont find match with id' + id);
+        err.status=404;
+        next(err);
+    }
+    })
+    .catch(err=>{next(err);});
+    
+};
+exports.update = (req, res,next) => {
+    let item = req.body;
+    let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/))
+        {
+            let err=new Error('invalid item id');
+            err.status=400;
+            return next(err);
+        }
+    model.findByIdAndUpdate(id, item, {useFindAndModify:false,runValidators:true})
+    .then(item=>{
+        if (item) {
+            res.redirect('/items/' + id);
+        } else {
+            let err = new Error('Cannot find a items with id ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err => { 
+        if(err.name='ValidationError')
+        {
+            err.status=400;
+        }
+        next(err); });
+};
+exports.delete = (req, res,next) => {
+    let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/))
+        {
+            let err=new Error('invalid item id');
+            err.status=400;
+            return next(err);
+        }
+    model.findByIdAndDelete(id,{useFindAndModify:false})
+    .then(item=>{
+        if (item) {
+            res.redirect('/items/');
+        } else {
+            
+            let err = new Error('Cannot find a item with id ' + id);
+            err.status = 404;
+            next(err);
+            
+        }
+    })
+    .catch(err => { 
+        next(err); });
+    
 };

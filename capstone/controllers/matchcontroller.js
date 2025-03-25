@@ -1,38 +1,110 @@
 const model = require("../models/matchdata");
 
-exports.index = (req, res) => {
-    let games = model.find();
-    res.render('matches/index', {games});
+exports.index = (req, res,next) => {
+    model.find()
+    .then(matches=>{res.render('./matches/index',{matches});})
+    .catch(err=>{next(err);});
 };
 exports.new = (req, res) => {
     res.render('matches/newgame');
 };
-exports.create = (req, res) => {
-    let newgame=req.body;
-    console.log(newgame);
-    model.newgame(newgame);
-    res.redirect('/matches/')
+exports.create = (req, res,next) => {
+    let newgame=new model(req.body);
+    model.save()
+    .then((game)=>{
+        res.redirect('/matches/')
+    })
+    .catch(err=>{next(err);});
+    
 };
-exports.show = (req, res) => {
+exports.show = (req, res,next) => {
    let id=req.params.id;
-   
-    let game=model.findById(id.toString());
-    console.log(id,game);
-    res.render('matches/game', {game});
+   if(!id.match(/^[0-9a-fA-F]{24}$/))
+    {
+        let err=new Error('invalid match id');
+        err.status=400;
+        return next(err);
+    }
+    model.findById(id)
+    .then(match=>{
+    if(match)
+        { res.render('matches/game', {game});  }
+    else{let err=new Error('cannont find match with id' + id);
+        err.status=404;
+        next(err);
+    }
+    })
+    .catch(err=>{next(err);});
+    
 };
-exports.edit = (req, res) => {
-    let id =req.params.id;
-    let game=model.findById(id.toString());
-    res.render('matches/edit', {game});
-};
-exports.update = (req, res) => {
-    let update=req.body;
+exports.edit = (req, res,next) => {
     let id=req.params.id;
-    model.updateById(id,update);
-    res.redirect('/matches/');
+    let match = model.findById(id);
+   if(!id.match(/^[0-9a-fA-F]{24}$/))
+    {
+        let err=new Error('invalid match id');
+        err.status=400;
+        return next(err);
+    }
+    model.findById(id)
+    .then(match=>{
+    if(match)
+        { res.render('matches/edit', {match});  }
+    else{let err=new Error('cannont find match with id' + id);
+        err.status=404;
+        next(err);
+    }
+    })
+    .catch(err=>{next(err);});
+    
 };
-exports.delete = (req, res) => {
-    let id=req.params.id;
-    model.deleteById(id);
-    res.redirect('/matches/');
+exports.update = (req, res,next) => {
+    let match = req.body;
+    let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/))
+        {
+            let err=new Error('invalid match id');
+            err.status=400;
+            return next(err);
+        }
+    model.findByIdAndUpdate(id, match, {useFindAndModify:false,runValidators:true})
+    .then(match=>{
+        if (match) {
+            res.redirect('/matches/' + id);
+        } else {
+            let err = new Error('Cannot find a match with id ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err => { 
+        if(err.name='ValidationError')
+        {
+            err.status=400;
+        }
+        next(err); });
+};
+exports.delete = (req, res,next) => {
+    let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/))
+        {
+            let err=new Error('invalid match id');
+            err.status=400;
+            return next(err);
+        }
+    model.findByIdAndDelete(id,{useFindAndModify:false})
+    .then(match=>{
+        if (match) {
+            res.redirect('/matches/');
+        } else {
+            
+            let err = new Error('Cannot find a match with id ' + id);
+            err.status = 404;
+            next(err);
+            
+        }
+    })
+    .catch(err => { 
+        next(err); });
+    
 };
