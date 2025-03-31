@@ -1,17 +1,27 @@
-<form class="sign-up" method="POST">
+<%- include('../partials/header.ejs')%>
 
-    <div>
-        <label>username:</label>
-        <input name="username" type="text" required>
+<% if (successMessages.length > 0) { %>
+    <div class="flash-message success">
+        <%= successMessages[0] %>
     </div>
-
-    <div>
-        <label>password:</label>
-        <input name="password" type="text" required>
+<% } %>
+<% if (errorMessages.length > 0) { %>
+    <div class="flash-message error">
+        <%= errorMessages[0] %>
     </div>
+<% } %>
 
-    <input type="submit">
+<main>
+    <div class="form-container">
+        <form class="form-group" action="/login" method="POST">
+            <h3>Login</h3><br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button class="form-submit">Login</button>
+        </form>
+    </div>
+</main>
 
-
-
-</form>
+<%- include('../partials/footer.ejs')%>

@@ -10,8 +10,9 @@ exports.new = (req, res) => {
 };
 exports.create = (req, res,next) => {
     let newgame=new model(req.body);
+    newgame.img = "/images/" + req.file.filename;
     newgame.save()
-    .then((game)=>{
+    .then(()=>{
         res.redirect('/matches/')
     })
     .catch(err=>{next(err);});
@@ -60,6 +61,7 @@ exports.edit = (req, res,next) => {
 };
 exports.update = (req, res,next) => {
     let game = req.body;
+    game.img = "/images/" + req.file.filename;
     let id = req.params.id;
     if(!id.match(/^[0-9a-fA-F]{24}$/))
         {

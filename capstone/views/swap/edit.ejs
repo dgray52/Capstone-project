@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs')%>
 
 <main>
-    <div class="edit-form-container">
+    <div class="form-container">
         <form class="form-group" method = "POST" action = "/swaps/<%= item.id%>?_method=PUT" enctype="multipart/form-data">
                 <div>
                     <label>Seller Name *</label>
@@ -30,7 +30,7 @@
                     <input id="upload-btn" type="file" name="img">
                 </div>
 
-                <input class="edit-form-submit" type="submit">
+                <input class="form-submit" type="submit">
 
         </form>
     </div>

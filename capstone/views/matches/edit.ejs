@@ -1,22 +1,20 @@
 <%- include('../partials/header.ejs')%>
-<main class="swap-item-main">
-    <div class="item-info">
-    <form  method = 'POST' action = "/matches/<%=game.id%>?_method=PUT"  class="new-form">
-        <label for="sport">Name of the sport</label>
-        <input name="sport" id="sport" type="text" value = "<%=game.sport%>" required>
-        <br>
-        <label for="home">Host</label>
-        <input name="home" id="home" type="home"   value = "<%=game.home%>" required>
-        <br>
-        <label for="away">Challenger</label>
-        <input name="away" id="away" type="text" value = "<%=game.away%>" required>
-        <br>
-        <label for="location">location of the game</label>
-        <textarea name="location" id="location" required value = "<%=game.location%>"></textarea>
-        <br>
-        <input type="submit" value="Submit">
-      
-    </form>
-</div>
+<main>
+    <div class="form-container">
+        <form class="form-group" method = 'POST' action = "/matches/<%=game.id%>?_method=PUT"  class="new-form" enctype="multipart/form-data">
+            <label for="sport">Name of the sport</label>
+            <input name="sport" id="sport" type="text" value = "<%=game.sport%>" required>
+            <label for="home">Host</label>
+            <input name="home" id="home" type="home"   value = "<%=game.home%>" required>
+            <label for="away">Challenger</label>
+            <input name="away" id="away" type="text" value = "<%=game.away%>" required>
+            <label for="location">location of the game</label>
+            <textarea name="location" id="location" required value = "<%=game.location%>"></textarea>
+            <label>Image</label> 
+            <input id="upload-btn" type="file" name="img">
+            <input class="form-submit" type="submit" value="Submit">
+        
+        </form>
+    </div>
 </main>
 <%- include('../partials/footer.ejs')%>

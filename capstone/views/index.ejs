@@ -11,8 +11,13 @@
             <h1>HELLO NINERMEET</h1>
             <p>Better days are coming. Join NinerMeet to swap items & match games</p>
             <div class="buttons">
-                <a href="/swaps" class="btn swap-items">Swap Items</a>
-                <a href="/matches" class="btn match-games">Match Games</a>
+                <% if (user) { %>
+                    <a href="/swaps" class="btn swap-items">Swap Items</a>
+                    <a href="/matches" class="btn match-games">Match Games</a>
+                <% } else {%>
+                    <a href="/register" class="btn swap-items">Register</a>
+                    <a href="/login" class="btn match-games">Login</a>
+                <%} %>
             </div>
         </div>
     </div>

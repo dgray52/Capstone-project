@@ -11,7 +11,7 @@ router.get('/new', controller.new);
 
 //post /swaps 
 
-router.post('/', controller.create);
+router.post('/', upload.single('img'), controller.create);
 //get swaps/:id
 router.get('/:id', controller.show);
 //get /swaps/:id/edit:

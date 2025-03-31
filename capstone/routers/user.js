@@ -10,4 +10,8 @@ router.get('/login', controller.loginIndex);
 
 router.post('/login', controller.login);
 
+router.get('/profile', controller.profileIndex);
+
+router.get('/logout', controller.logout);
+
 module.exports = router;

@@ -1,14 +1,18 @@
 <%- include('../partials/header.ejs')%>
-<main class="swap-item-main">
-    <img src="<%= game.img%>" alt="game image">
-    <div class="item-info">
-        <h2><%=game.sport%>
-        </h2>
-        <p><%=game.home%> vs <%=game.away%></p>
-        <p><%= game.location%></p>
-        <form><button type="submit" formmethod="GET" formaction="/matches/<%= game.id%>/edit">Edit</button>
-            <button type="submit" formmethod="POST" formaction="/matches/<%= game.id%>?_method=DELETE">Delete</button>
-        </form>
+<main>
+    <div class="product-container">
+        <div class="product-image">
+            <img src="<%= game.img%>" alt="game image">
+        </div>
+        <div class="product-details">
+            <h2><%=game.sport%>
+            </h2>
+            <p><%=game.home%> vs <%=game.away%></p>
+            <p><%= game.location%></p>
+            <form><button  class="edit" type="submit" formmethod="GET" formaction="/matches/<%= game.id%>/edit">Edit</button>
+                <button class= "delete" type="submit" formmethod="POST" formaction="/matches/<%= game.id%>?_method=DELETE">Delete</button>
+            </form>
+        </div>
     </div>
 </main>
 <%- include('../partials/footer.ejs')%>

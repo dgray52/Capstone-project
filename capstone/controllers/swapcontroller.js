@@ -9,12 +9,16 @@ exports.new = (req, res) => {
     res.render('swap/newitem');
 };
 exports.create = (req, res,next) => {
-    let newitem=new model(req.body);
+    let newitem= new model(req.body);
+    newitem.img = "/images/" + req.file.filename;
     newitem.save()
-    .then((item)=>{
+    .then(()=>{
+        console.log(newitem);
         res.redirect('/swaps/');
     })
-    .catch(err=>{next(err);});
+    .catch(err=>{
+        next(err);
+    });
     
 };
 exports.show = (req, res,next) => {
@@ -60,6 +64,7 @@ exports.edit = (req, res,next) => {
 };
 exports.update = (req, res,next) => {
     let item = req.body;
+    item.img = "/images/" + req.file.filename;
     let id = req.params.id;
     if(!id.match(/^[0-9a-fA-F]{24}$/))
         {
