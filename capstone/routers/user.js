@@ -14,4 +14,8 @@ router.get('/profile', controller.profileIndex);
 
 router.get('/logout', controller.logout);
 
+router.get('/profile/edit', controller.editIndex);
+
+router.put('/profile', controller.edit);
+
 module.exports = router;
