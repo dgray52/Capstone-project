@@ -5,12 +5,14 @@ const methodOverride=require('method-override');
 const morgan=require('morgan');
 const SwapRoutes=require('./routers/swaprouter');
 const MatchRoutes=require('./routers/matchrouter');
+const OfferRoutes = require('./routers/OfferRoutes');
 const UserRoutes = require('./routers/user');
 const { v4: uuidv4 } = require('uuid');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const session = require('express-session');
 const flash = require('connect-flash');
+
 
 
 
@@ -58,14 +60,17 @@ app.use((req, res, next)=>{
     res.locals.user = req.session.user || null;
     res.locals.successMessages = req.flash('success');
     res.locals.errorMessages = req.flash('error');
-    console.log(req.session);
+    res.locals.lastitemseen= null;
+    //console.log(req.session);
     next();
 });
 
 app.get('/',(req,res) =>{
     res.render('index');    
 });
+app.use('/offers', OfferRoutes);
 app.use('/matches',MatchRoutes);
 app.use('/swaps',SwapRoutes);
 app.use('/', UserRoutes);
+
 

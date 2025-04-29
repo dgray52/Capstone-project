@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs')%>
+<div class="profile-container">
+    
+    <div class="profile-header">
+      <h2>Offers you have made</h2>
+      <ul>
+    </div>
+      <% offers.forEach(offer=>{ if(offer.offerer.id===user){%>
+        <li><div>
+            You have  offered <%= offer.Offer%> for  <%=offer.onItem.name%> | Offer is currently <% if(offer.acepted===1){%> Pending <%} if(offer.acepted===2){%> Accepted <%}if(offer.acepted===3){%> Rejected <%}%>
+            <%if(offer.acepted===1){%><form><button class= "delete" type="submit" formmethod="POST" formaction="/offers/<%= offer.id%>?_method=DELETE">Delete</button> <%}%>  <%if(offer.acepted===3){%><form><button type="submit" formmethod="POST" formaction="/offers/<%= offer.id%>?_method=DELETE">Got it</button> <%}%>
+           
+        </div></li>
+    <% }}) %>
+    
+</ul>
+
+</div>
+<div class="profile-container">
+    
+    <div class="profile-header">
+      <h2>Offers on your items</h2>
+      <ul>
+    </div>
+      <% offers.forEach(offer=>{ if(offer.offerer.id!=user&&offer.acepted!=3){%>
+        <li><div>
+            <%if(offer.acepted===1) {%>
+            <%=offer.offerer.firstName + " "+offer.offerer.lastName%> has offered you: <%= offer.Offer%> for:  <%=offer.onItem.name%> | Offer is currently <% if(offer.acepted===1){%> Pending <%} if(offer.acepted===2){%> Accepted <%}if(offer.acepted===3){%> Rejected <%}%>
+          <form><input type = "hidden" name = "Accept" value = "2" /><button  type="submit" formmethod="POST" formaction="/offers/<%= offer.id%>?_method=PUT">Accept</button></form><form><input type = "hidden" name = "Reject" value = "3" /><button  type="submit" formmethod="POST" formaction="/offers/<%= offer.id%>?_method=PUT">Reject</button></form> 
+          <%} else{%>
+            You accepted <%=offer.offerer.firstName + " "+offer.offerer.lastName%> offer of <%= offer.Offer%> for <%=offer.onItem.name%>
+        
+            <% }%> 
+
+        </div></li>
+    <% }}) %>
+    
+</ul>
+
+</div>
+<%- include('../partials/footer.ejs')%>

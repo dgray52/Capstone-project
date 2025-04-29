@@ -12,6 +12,7 @@
     
             <form><button class="edit" type="submit" formmethod="GET" formaction="/swaps/<%= item.id%>/edit">Edit</button>
                 <button class= "delete" type="submit" formmethod="POST" formaction="/swaps/<%= item.id%>?_method=DELETE">Delete</button>
+                <%if((user!=item.createdby)){%> <button class="offer" type="submit" formmethod="GET" formaction="/offers/new">make offer</button> <%}%>
             </form>
     
             <div class="product-info">

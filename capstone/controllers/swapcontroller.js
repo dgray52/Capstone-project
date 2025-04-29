@@ -2,14 +2,17 @@ const model = require("../models/data");
 
 exports.index = (req, res,next) => {
     model.find()
-    .then(items=>{res.render('./swap/index',{items});})
+    .then(items=>{
+        res.render('./swap/index',{items});})
     .catch(err=>{next(err);});
 };
 exports.new = (req, res) => {
     res.render('swap/newitem');
 };
 exports.create = (req, res,next) => {
+    
     let newitem= new model(req.body);
+    newitem.createdby=req.session.user;
     newitem.img = "/images/" + req.file.filename;
     newitem.save()
     .then(()=>{
@@ -23,6 +26,7 @@ exports.create = (req, res,next) => {
 };
 exports.show = (req, res,next) => {
    let id=req.params.id;
+
    if(!id.match(/^[0-9a-fA-F]{24}$/))
     {
         let err=new Error('invalid item id');
@@ -32,7 +36,9 @@ exports.show = (req, res,next) => {
     model.findById(id)
     .then(item=>{
     if(item)
-        { res.render('swap/item', {item});  }
+
+        {   req.session.lastitemseen=id;
+            res.render('swap/item', {item});  }
     else{let err=new Error('cannont find item with id' + id);
         err.status=404;
         next(err);

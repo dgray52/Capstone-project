@@ -3,14 +3,14 @@
     <h2 class="title">ITEMS FOR SWAPPING</h2>
     <h3 class="title">Make a new listing <a href="/swaps/new"><b>here</b></a></h3>
     <div class="products">
-        <% items.forEach(item=>{ %>
+        <% items.forEach(item=>{if(item.active===true){ %>
             <a href="/swaps/<%=item.id%>">
             <div class="product">
                 <span class="badge"><%= item.category%></span>
                 <img src="<%= item.img%>" alt="item image">
                 <p><%=item.name%></p>
             </div></a>
-        <% }) %>
+        <% }}) %>
     </div>
 </main>
 <%- include('../partials/footer.ejs')%>

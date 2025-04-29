@@ -6,7 +6,9 @@ const itemSchema = new Schema({
     seller: {type: String, required: [true, ' seller name is required']},
     name: {type: String, required: [true, 'item name is required']},
     img: {type: String, default:'/images/books.png'},
-    description: {type: String, required: [true, 'item description is required']}
+    description: {type: String, required: [true, 'item description is required']},
+    createdby:{type:Schema.Types.ObjectId, ref:'User'},
+    active:{type:Boolean, default:true}
 }
 );
 
