@@ -13,7 +13,8 @@ exports.create = (req, res,next) => {
     
     let newitem= new model(req.body);
     newitem.createdby=req.session.user;
-    newitem.img = "/images/" + req.file.filename;
+    if(req.file){
+    newitem.img = "/images/" + req.file.filename;}
     newitem.save()
     .then(()=>{
         console.log(newitem);
@@ -70,7 +71,8 @@ exports.edit = (req, res,next) => {
 };
 exports.update = (req, res,next) => {
     let item = req.body;
-    item.img = "/images/" + req.file.filename;
+    if(req.file){
+    item.img = "/images/" + req.file.filename;}
     let id = req.params.id;
     if(!id.match(/^[0-9a-fA-F]{24}$/))
         {
