@@ -1,0 +1,53 @@
+<%- include('./partials/header.ejs')%>
+
+  <form class="edit-container" method = 'POST' action = "/profile?_method=PUT" >
+    <div class="edit-header">
+      <h2>Edit Profile</h2>
+      <input class="edit-btn" type="submit" value="Save">
+    </div>
+
+    <div class="edit-form">
+      <div class="edit-form-row">
+        <div class="edit-form-group">
+          <label>First Name</label>
+          <input name = 'firstName' type="text" placeholder="Your First Name" 
+          value="<%= user.firstName || '' %>">
+        </div>
+        <div class="edit-form-group">
+          <label>Last Name</label>
+          <input name= 'lastName' type="text" placeholder="Your Last Name" 
+          value="<%= user.lastName || '' %>">
+        </div>
+      </div>
+
+      <div class="edit-form-row">
+        <div class="edit-form-group">
+          <label>Major</label>
+          <input name='major' type="text" placeholder="Your Major" 
+          value="<%= user.major || '' %>">
+        </div>
+        <div class="edit-form-group">
+          <label>Concentration</label>
+          <input name= 'concentration' type="text" placeholder="Your Concentration" 
+          value="<%= user.concentration || '' %>">
+        </div>
+      </div>
+
+      <div class="edit-form-row">
+        <div class="edit-form-group">
+          <label>Phone</label>
+          <input name='phone' type="text" placeholder="Your Phone Number" 
+          value="<%= user.phone || '' %>">
+        </div>
+        <div class="edit-form-group">
+          <label>Address</label>
+          <input name='email' type="text" placeholder="Your Email" 
+          value="<%= user.email || '' %>">
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+<%- include('./partials/footer.ejs')%>
+

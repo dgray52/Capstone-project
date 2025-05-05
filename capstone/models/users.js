@@ -7,6 +7,9 @@ const userSchema = new Schema({
     lastName: {type: String, required:[true, 'cannot be empty']},
     email: {type: String, required:[true, 'cannot be empty'], unique: true},
     password: {type: String, required:[true, 'cannot be empty']},
+    major: {type: String},
+    concentration: {type: String},
+    phone: {type: Number}
 });
 
 //replace plaintext password with hashed password before saving the document in the database

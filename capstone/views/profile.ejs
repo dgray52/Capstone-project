@@ -1,6 +1,60 @@
 <%- include('./partials/header.ejs')%>
 
+<% if (successMessages.length > 0) { %>
+    <div class="flash-message success">
+        <%= successMessages[0] %>
+    </div>
+<% } %>
+<% if (errorMessages.length > 0) { %>
+    <div class="flash-message error">
+        <%= errorMessages[0] %>
+    </div>
+<% } %>
+
 <h2>Welcome, <%= user.firstName + "   " + user.lastName%></h2>
+
+<div class="profile-container">
+    
+    <div class="profile-header">
+      <h2>Profile</h2>
+      <button class="edit-btn" onclick="window.location.href='profile/edit'">Edit</button>
+    </div>
+
+    <div class="profile-form">
+      <div class="profile-form-row">
+        <div class="profile-form-group">
+          <label>First Name</label>
+          <p><%= user.firstName || 'None' %></p>
+        </div>
+        <div class="profile-form-group">
+          <label>Last Name</label>
+          <p><%= user.lastName || 'None' %></p>
+        </div>
+      </div>
+
+      <div class="profile-form-row">
+        <div class="profile-form-group">
+          <label>Major</label>
+          <p><%= user.major || 'None' %></p>
+        </div>
+        <div class="profile-form-group">
+          <label>Concentration</label>
+          <p><%= user.concentration || 'None' %></p>
+        </div>
+      </div>
+
+      <div class="profile-form-row">
+        <div class="profile-form-group">
+          <label>Phone</label>
+          <p><%= user.phone || 'None' %></p>
+        </div>
+        <div class="profile-form-group">
+          <label>Email Address</label>
+          <p><%= user.email || 'None' %></p>
+        </div>
+      </div>
+    </div>
+</div>
 
 
 <%- include('./partials/footer.ejs')%>

@@ -321,3 +321,130 @@ button {
 }
 
 /* end flash css */
+
+
+/*start profile*/
+  
+  h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .profile-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  
+  .profile-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .edit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .profile-form-row {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 20px;
+  }
+  
+  .profile-form-group {
+    flex: 1;
+  }
+  
+  .profile-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .profile-form-group p {
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+
+/*end profile*/
+
+/*start edit-profile form*/
+
+.edit-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 30px;
+  }
+  
+  .edit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .edit-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    width: 30%;
+    height: 10%;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .edit-form .edit-form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .edit-form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-form-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .edit-form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+/*end edit-profile form*/

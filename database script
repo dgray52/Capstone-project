@@ -1,0 +1,12 @@
+using mongosh (MongoDB Shell) to track data from MongoDB Atlas 
+
+1. install mongosh
+2. on the command line, type: 
+    mongosh "mongodb+srv://admin:admin123@cluster0.utk9b.mongodb.net/capstone?retryWrites=true&w=majority&appName=Cluster0"
+
+After successful connection, you'll enter an interactive shell connected to the capstone database.
+
+To list all collections, use: show collections
+
+To list documents from a specific collection, use: db.<collection_name>.find()
+for example, list user data from users collection, use: db.users.find()

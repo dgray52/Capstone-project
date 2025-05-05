@@ -88,3 +88,44 @@ exports.logout = (req, res, next) =>{
             res.redirect('/');
     });
 };
+
+exports.editIndex = (req, res, next) => {
+    let id = req.session.user;
+    User.findById(id)
+    .then(user=>res.render('edit', {user}))
+    .catch(err=>next(err));
+}
+
+exports.edit = (req, res, next) => {
+    let id = req.session.user;
+    let body = req.body;
+    User.findById(id)
+    .then(user=>{
+        user.email = req.body.email;
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        user.major = req.body.major;
+        user.concentration = req.body.concentration;
+        user.phone = req.body.phone;
+        user.save()
+            .then(updatedUser => {
+                    req.flash('success', 'You have successfully updated profile!');
+                    req.session.save(()=>{
+
+                        res.redirect('/profile');
+                    })
+                    
+                })
+            .catch(err => {
+                req.flash('error', 'error!');
+
+                req.session.save(()=>{
+
+                    next(err); 
+                })
+               
+            });
+        }
+    )
+    .catch(err=>next(err));
+}
