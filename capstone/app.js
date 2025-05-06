@@ -73,4 +73,20 @@ app.use('/matches',MatchRoutes);
 app.use('/swaps',SwapRoutes);
 app.use('/', UserRoutes);
 
+app.use((req, res, next) =>{
+    let err = new Error('The server cannot locate' + req.url);
+    err.status = 404;
+    next(err);
+});
 
+app.use((err, req, res, next) =>{
+    console.log(err.stack);
+    if(!err.status){
+        err.status = 500;
+        err.message = ("Internal Server Error");
+    }
+    res.status(err.status);
+    res.render('error', {error:err, cssFile:'css/err.css'});
+});
+
+module.exports = app;
